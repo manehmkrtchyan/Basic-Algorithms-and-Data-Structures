@@ -25,7 +25,7 @@ class DoublyLinkedList:
             new.prev = None 
 
     def insert(self, value, pos):
-        if pos > len(self) + 1:
+        if pos > len(self) + 1 or pos < 0:
             raise IndexError
         else:
             new = Node(value)
