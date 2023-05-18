@@ -17,12 +17,15 @@ class LinkedList:
         else: self.head = new_head
 
     def insert(self, value, pos):
-        current = self.head
-        for i in range(1, pos):
-            current = current.next
-        tmp = current.next
-        current.next = (new := Node(value))   
-        new.next = tmp
+        if pos > len(self) + 1 or pos < 0:
+            raise IndexError
+        else:
+            current = self.head
+            for i in range(1, pos):
+                current = current.next
+            tmp = current.next
+            current.next = (new := Node(value))   
+            new.next = tmp
 
     def push_back(self, value):
         node = Node(value)      
@@ -64,15 +67,3 @@ class LinkedList:
     
     def __repr__(self) -> str:
         return str([node.value for node in self])
-
-ls = LinkedList()
-ls.push_front(1)
-ls.push_front(2)
-ls.push_front(3)
-ls.push_front(4)
-ls.insert(7, 2)
-ls.push_back(9)
-ls.push_back(8)
-ls.push_back(10)
-print(ls)
-print(ls.find(34))
